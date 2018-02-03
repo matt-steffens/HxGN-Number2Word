@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexMin.Financial", "HexMin.Financial\HexMin.Financial.csproj", "{FCB458B4-3C9A-4EC6-B281-A2DE2A843450}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexMin.Financial.Tests", "HexMin.Financial.Tests\HexMin.Financial.Tests.csproj", "{784EB006-B4E3-41F7-9783-3859CAB7142C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCB458B4-3C9A-4EC6-B281-A2DE2A843450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCB458B4-3C9A-4EC6-B281-A2DE2A843450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCB458B4-3C9A-4EC6-B281-A2DE2A843450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCB458B4-3C9A-4EC6-B281-A2DE2A843450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{784EB006-B4E3-41F7-9783-3859CAB7142C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784EB006-B4E3-41F7-9783-3859CAB7142C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784EB006-B4E3-41F7-9783-3859CAB7142C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784EB006-B4E3-41F7-9783-3859CAB7142C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBEA8080-6616-4751-AB95-656C8F2F2402}
+	EndGlobalSection
+EndGlobal
