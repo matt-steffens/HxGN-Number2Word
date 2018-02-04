@@ -18,6 +18,7 @@ namespace HexMin.Financial
 
         static void Main()
         {
+            Console.Clear();
             Console.WriteLine("Welcome to HexMin Financial!");
             ProductInfo();
 
@@ -40,7 +41,7 @@ namespace HexMin.Financial
 
             string inputValue;
 
-            while ((inputValue = Console.ReadLine()?.ToUpper()) != Exit)
+            while ((inputValue = Console.ReadLine()?.ToUpper()) != $"{Exit}*")
             {
                 if (inputValue == "1")
                 {
@@ -54,17 +55,21 @@ namespace HexMin.Financial
                 {
                     TerminateOption();
                 }
+                else
+                {
+                    ShowInvalidInputMessage(inputValue);
+                }
             }
         }
 
         private static void WordifyNumbersOption()
         {
-            const string PreviousMenuText = "To return to the previous menu, please type 'exit' command.";
+            const string previousMenuText = "To return to the previous menu, please type 'exit' command.";
             anyOptionSelected = true;
 
             Console.Clear();
             Console.WriteLine("Please enter a number below to be 'Wordified'.");
-            Console.WriteLine(PreviousMenuText);
+            Console.WriteLine(previousMenuText);
             Console.WriteLine();
 
             string inputValue;
@@ -89,7 +94,7 @@ namespace HexMin.Financial
                         defaultMessage = noValueEntered;
                     }
 
-                    Console.WriteLine($"{defaultMessage} Please repeat entering a valid number.{(defaultMessage == noValueEntered ? " " + PreviousMenuText : string.Empty)}");
+                    Console.WriteLine($"{defaultMessage} Please retry entering a valid number.{(defaultMessage == noValueEntered ? " " + previousMenuText : string.Empty)}");
                     Console.WriteLine();
                 }
                 catch (Exception ex)
@@ -116,7 +121,7 @@ namespace HexMin.Financial
 
             string inputValue;
 
-            while ((inputValue = Console.ReadLine()?.ToUpper()) != Exit)
+            while ((inputValue = Console.ReadLine()?.ToUpper()) != $"{Exit}*")
             {
                 if (inputValue == "1")
                 {
@@ -130,6 +135,10 @@ namespace HexMin.Financial
                 {
                     MainMenuOption();
                 }
+                else
+                {
+                    ShowInvalidInputMessage(inputValue);
+                }
             }
         }
 
@@ -139,7 +148,10 @@ namespace HexMin.Financial
             Console.WriteLine("Digit Group Limit");
             Console.WriteLine("-----------------");
 
-            foreach (var digitGroup in NumberConfig.AvailableDigitGroups.Select((dg, idx) => new { Idx = idx, Name = dg.ToUpper() }).ToArray())
+            var digitGroups = NumberConfig.AvailableDigitGroups.Select((dg, idx) => new { Idx = idx, Name = dg.ToUpper() }).ToArray();
+            var validValues = digitGroups.Select(x => x.Idx + 1).ToList();
+
+            foreach (var digitGroup in digitGroups)
             {
                 Console.WriteLine($"{digitGroup.Idx + 1}) {digitGroup.Name}{(digitGroup.Idx + 1 == NumberConfig.DigitGroups.Length ? " (Current)" : string.Empty)}");
             }
@@ -147,23 +159,37 @@ namespace HexMin.Financial
             Console.WriteLine($"{ExitCode}) Exit");
             Console.WriteLine();
 
-            var inputValue = Console.ReadLine();
+            string inputValue;
 
-            if (inputValue != ExitCode)
+            while ((inputValue = Console.ReadLine()?.ToUpper()) != $"{Exit}*")
             {
-                var indexDigitGroup = Convert.ToInt32(inputValue) - 1;
+                var input = ConvertInputToNumber(inputValue);
 
-                NumberConfig.SetDigitGroups(indexDigitGroup);
+                if (!input.HasValue)
+                {
+                    continue;
+                }
 
-                Console.WriteLine();
-                Console.WriteLine($"Digit Group Limit has been set to '{NumberConfig.AvailableDigitGroups[indexDigitGroup].ToUpper()}'.");
+                if (validValues.Contains(input.Value))
+                {
+                    var indexDigitGroup = Convert.ToInt32(inputValue) - 1;
 
-                Thread.Sleep(2000);
-                SetupOption();
-            }
-            else
-            {
-                SetupOption();
+                    NumberConfig.SetDigitGroups(indexDigitGroup);
+
+                    Console.WriteLine();
+                    Console.WriteLine($"Digit Group Limit has been set to '{NumberConfig.AvailableDigitGroups[indexDigitGroup].ToUpper()}'.");
+
+                    Thread.Sleep(2000);
+                    SetupOption();
+                }
+                else if (inputValue == ExitCode)
+                {
+                    SetupOption();
+                }
+                else
+                {
+                    ShowInvalidInputMessage(inputValue);
+                }
             }
         }
 
@@ -173,32 +199,48 @@ namespace HexMin.Financial
             Console.WriteLine("Decimal Rounding");
             Console.WriteLine("----------------");
 
-            for (int i = 0; i < 5; i++)
+            var validValues = Enumerable.Range(0, 5).ToList();
+
+            foreach (var value in validValues)
             {
-                Console.WriteLine($"{i}) {i} Decimal{(i > 1 ? "s" : string.Empty)}{(i == decimalRound ? " (Current)" : string.Empty)}");
+                Console.WriteLine($"{value}) {value} Decimal{(value > 1 ? "s" : string.Empty)}{(value == decimalRound ? " (Current)" : string.Empty)}");
             }
 
             Console.WriteLine($"{ExitCode}) Exit");
             Console.WriteLine();
 
-            var inputValue = Console.ReadLine();
+            string inputValue;
 
-            if (inputValue != ExitCode)
+            while ((inputValue = Console.ReadLine()?.ToUpper()) != $"{Exit}*")
             {
-                decimalRound = Convert.ToInt32(inputValue);
+                var input = ConvertInputToNumber(inputValue);
 
-                Console.WriteLine();
-                Console.WriteLine($"Decimal Rounding has been set to '{decimalRound}'.");
+                if (!input.HasValue)
+                {
+                    continue;
+                }
 
-                Thread.Sleep(2000);
-                SetupOption();
-            }
-            else
-            {
-                SetupOption();
+                if (validValues.Contains(input.Value))
+                {
+                    decimalRound = input.Value;
+
+                    Console.WriteLine();
+                    Console.WriteLine($"Decimal Rounding has been set to '{decimalRound}'.");
+
+                    Thread.Sleep(2000);
+                    SetupOption();
+                }
+                else if (inputValue == ExitCode)
+                {
+                    SetupOption();
+                }
+                else
+                {
+                    ShowInvalidInputMessage(inputValue);
+                }
             }
         }
-        
+
         private static void TerminateOption()
         {
             Console.Clear();
@@ -208,6 +250,28 @@ namespace HexMin.Financial
             Thread.Sleep(4000);
 
             Environment.Exit(0);
+        }
+
+        private static int? ConvertInputToNumber(string inputValue)
+        {
+            int? result = null;
+
+            try
+            {
+                result = Convert.ToInt32(inputValue);
+            }
+            catch (FormatException)
+            {
+                ShowInvalidInputMessage(inputValue);
+            }
+
+            return result;
+        }
+
+        private static void ShowInvalidInputMessage(string inputValue)
+        {
+            Console.WriteLine(!string.IsNullOrEmpty(inputValue) ? $"'{inputValue}' is not a valid input! Please retry." : "No value entered!");
+            Console.WriteLine();
         }
 
         private static void ProductInfo()
