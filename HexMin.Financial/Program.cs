@@ -199,7 +199,7 @@ namespace HexMin.Financial
             Console.WriteLine("Decimal Rounding");
             Console.WriteLine("----------------");
 
-            var validValues = Enumerable.Range(0, 5).ToList();
+            var validValues = Enumerable.Range(2, 4).ToList();
 
             foreach (var value in validValues)
             {
