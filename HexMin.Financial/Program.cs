@@ -17,7 +17,7 @@ namespace HexMin.Financial
         static void Main()
         {
             Console.WriteLine("Welcome to HexMin Financial!");
-            Console.WriteLine();
+            ProductInfo();
 
             MainMenuOption();
         }
@@ -50,7 +50,7 @@ namespace HexMin.Financial
                 }
                 else if (inputValue == ExitCode)
                 {
-                    Environment.Exit(0);
+                    TerminateOption();
                 }
             }
         }
@@ -195,6 +195,24 @@ namespace HexMin.Financial
             {
                 SetupOption();
             }
+        }
+        
+        private static void TerminateOption()
+        {
+            Console.Clear();
+            Console.WriteLine("Thank you for using HexFin Financial!");
+            ProductInfo();
+
+            Thread.Sleep(4000);
+
+            Environment.Exit(0);
+        }
+
+        private static void ProductInfo()
+        {
+            Console.WriteLine("Version 1.0.0");
+            Console.WriteLine("© 2018 Matt Steffens.");
+            Console.WriteLine();
         }
     }
 }
