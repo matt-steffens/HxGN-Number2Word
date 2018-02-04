@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using HexMin.Financial.Config;
 using HexMin.Financial.Services;
@@ -78,16 +80,16 @@ namespace HexMin.Financial
                 }
                 catch (FormatException)
                 {
-                    const string NoValueEntered = "No value entered!";
+                    const string noValueEntered = "No value entered!";
 
                     var defaultMessage = $"'{inputValue}' is not a valid number!";
 
                     if (string.IsNullOrWhiteSpace(inputValue))
                     {
-                        defaultMessage = NoValueEntered;
+                        defaultMessage = noValueEntered;
                     }
 
-                    Console.WriteLine($"{defaultMessage} Please repeat entering a valid number.{(defaultMessage == NoValueEntered ? " " + PreviousMenuText : string.Empty)}");
+                    Console.WriteLine($"{defaultMessage} Please repeat entering a valid number.{(defaultMessage == noValueEntered ? " " + PreviousMenuText : string.Empty)}");
                     Console.WriteLine();
                 }
                 catch (Exception ex)
@@ -210,8 +212,11 @@ namespace HexMin.Financial
 
         private static void ProductInfo()
         {
-            Console.WriteLine("Version 1.0.0");
-            Console.WriteLine("© 2018 Matt Steffens.");
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            var fileVesionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+
+            Console.WriteLine($"Version {version.Major}.{version.Minor}.{version.Build}");
+            Console.WriteLine($"{fileVesionInfo.LegalCopyright} {fileVesionInfo.CompanyName}.");
             Console.WriteLine();
         }
     }
