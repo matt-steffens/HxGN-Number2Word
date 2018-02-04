@@ -10,6 +10,7 @@ namespace HexMin.Financial
 {
     class Program
     {
+        private const string ProductName = "HexMin Financial";
         private const string ExitCode = "99";
         private const string Exit = "EXIT";
 
@@ -19,7 +20,7 @@ namespace HexMin.Financial
         static void Main()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to HexMin Financial!");
+            Console.WriteLine($"Welcome to {ProductName}!");
             ProductInfo();
 
             MainMenuOption();
@@ -244,7 +245,7 @@ namespace HexMin.Financial
         private static void TerminateOption()
         {
             Console.Clear();
-            Console.WriteLine("Thank you for using HexFin Financial!");
+            Console.WriteLine($"Thank you for using {ProductName}!");
             ProductInfo();
 
             Thread.Sleep(4000);
