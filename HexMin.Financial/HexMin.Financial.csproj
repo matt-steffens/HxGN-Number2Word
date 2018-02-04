@@ -43,6 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\NumberConfig.cs" />
+    <Compile Include="Config\DigitGroupNames.cs" />
+    <Compile Include="Config\TeenNames.cs" />
+    <Compile Include="Config\TenNames.cs" />
+    <Compile Include="Config\UnitNames.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NumberWordifier.cs" />

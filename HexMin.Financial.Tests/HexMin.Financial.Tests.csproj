@@ -37,7 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ValidInputTests.cs" />
+    <Compile Include="FinancialTestsBase.cs" />
+    <Compile Include="ValidInputsWithThreeDecimalsConfigTests.cs" />
+    <Compile Include="ValidInputsWithTwoDecimalsConfigTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

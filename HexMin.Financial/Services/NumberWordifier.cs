@@ -12,11 +12,13 @@ namespace HexMin.Financial.Services
             const string zero = "zero";
 
             var isNegative = number < 0;
+            var decimalStep = (long)Math.Pow(10, decimalRound);
 
+            //number = Math.Truncate(decimalStep * number) / decimalStep;
             number = Math.Round(Math.Abs(number), decimalRound);
 
             var integralValue = (long)Math.Truncate(number);
-            var fractionValue = (int)((number - integralValue) * (long)Math.Pow(10, decimalRound));
+            var fractionValue = (int)((number - integralValue) * decimalStep);
 
             var integralSize = Math.Floor(Math.Log10(integralValue) + 1);
             var fractionSize = Math.Floor(Math.Log10(fractionValue) + 1);

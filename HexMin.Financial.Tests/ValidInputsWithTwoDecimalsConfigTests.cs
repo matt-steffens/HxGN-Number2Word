@@ -1,19 +1,12 @@
-﻿using HexMin.Financial.Services;
+﻿using System;
+using HexMin.Financial.Config;
 using NUnit.Framework;
 
 namespace HexMin.Financial.Tests
 {
     [TestFixture]
-    public class ValidInputTests
+    public class ValidInputsWithTwoDecimalsConfigTests : FinancialTestsBase
     {
-        private NumberWordifier wrdSvc;
-
-        public ValidInputTests()
-        {
-            wrdSvc = new NumberWordifier();
-        }
-
-        [Test]
         [TestCase(0.00, ExpectedResult = "ZERO DOLLARS AND ZERO CENTS")]
         public string When_Zero_Value_Is_Entered_With_Zero_Decimal_Value(decimal inputValue)
         {
@@ -90,6 +83,26 @@ namespace HexMin.Financial.Tests
         public string When_Specific_Value_Is_Entered_With_Specific_Decimal_Value(decimal inputValue)
         {
             return wrdSvc.Wordify(inputValue);
+        }
+
+        [Test]
+        public void When_MaxBillion_Value_Is_Entered_With_999_Decimal_Value_An_Exception_Is_Thrown()
+        {
+            Assert.That(() => wrdSvc.Wordify(999999999999.999m), Throws.TypeOf<Exception>());
+        }
+
+        [Test]
+        public void When_Max_Billion_Value_Is_Entered_With_999_Decimal_Value_And_Trilllion_DigitGroups_Set()
+        {
+            // Setting Digit Groups temporary to 'Trillion' for this edge case test only.
+            NumberConfig.SetDigitGroups(Array.IndexOf(NumberConfig.AvailableDigitGroups, DigitGroupNames.Trillion));
+
+            var result = wrdSvc.Wordify(999999999999.999m);
+
+            Assert.That(result, Is.EqualTo("ONE TRILLION DOLLARS AND ZERO CENTS"));
+
+            // Setting Digit Groups back to 'Billion' (default) for other tests.
+            NumberConfig.SetDigitGroups(Array.IndexOf(NumberConfig.AvailableDigitGroups, DigitGroupNames.Billion));
         }
     }
 }
