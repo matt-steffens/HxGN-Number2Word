@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace HexMin.Financial.Tests
+namespace HxGN.Financial.Tests
 {
     public class ValidInputsWithThreeDecimalsConfigTests : FinancialTestsBase
     {

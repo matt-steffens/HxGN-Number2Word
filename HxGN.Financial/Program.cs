@@ -3,14 +3,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using HexMin.Financial.Config;
-using HexMin.Financial.Services;
+using HxGN.Financial.Config;
+using HxGN.Financial.Services;
 
-namespace HexMin.Financial
+namespace HxGN.Financial
 {
     class Program
     {
-        private const string ProductName = "HexMin Financial";
+        private const string ProductName = "HxGN Financial";
         private const string ExitCode = "99";
         private const string Exit = "EXIT";
 

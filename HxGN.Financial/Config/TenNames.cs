@@ -1,4 +1,4 @@
-﻿namespace HexMin.Financial.Config
+﻿namespace HxGN.Financial.Config
 {
     public class TenNames
     {

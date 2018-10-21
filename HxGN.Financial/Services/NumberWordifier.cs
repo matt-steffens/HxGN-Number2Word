@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using HexMin.Financial.Config;
+using HxGN.Financial.Config;
 
-namespace HexMin.Financial.Services
+namespace HxGN.Financial.Services
 {
     public class NumberWordifier
     {

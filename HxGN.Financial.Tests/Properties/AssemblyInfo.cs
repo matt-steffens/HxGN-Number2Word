@@ -2,11 +2,11 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("HexMin.Financial.Tests")]
+[assembly: AssemblyTitle("HxGN.Financial.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Matt Steffens")]
-[assembly: AssemblyProduct("HexMin.Financial.Tests")]
+[assembly: AssemblyProduct("HxGN.Financial.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

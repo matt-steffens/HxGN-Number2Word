@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace HexMin.Financial.Config
+namespace HxGN.Financial.Config
 {
     public class NumberConfig
     {

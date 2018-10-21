@@ -1,8 +1,8 @@
 ﻿using System;
-using HexMin.Financial.Config;
+using HxGN.Financial.Config;
 using NUnit.Framework;
 
-namespace HexMin.Financial.Tests
+namespace HxGN.Financial.Tests
 {
     [TestFixture]
     public class ValidInputsWithTwoDecimalsConfigTests : FinancialTestsBase
