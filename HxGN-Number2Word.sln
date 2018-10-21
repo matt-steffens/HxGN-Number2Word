@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexMin.Financial", "HexMin.Financial\HexMin.Financial.csproj", "{FCB458B4-3C9A-4EC6-B281-A2DE2A843450}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HxGN.Financial", "HxGN.Financial\HxGN.Financial.csproj", "{FCB458B4-3C9A-4EC6-B281-A2DE2A843450}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexMin.Financial.Tests", "HexMin.Financial.Tests\HexMin.Financial.Tests.csproj", "{784EB006-B4E3-41F7-9783-3859CAB7142C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HxGN.Financial.Tests", "HxGN.Financial.Tests\HxGN.Financial.Tests.csproj", "{784EB006-B4E3-41F7-9783-3859CAB7142C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

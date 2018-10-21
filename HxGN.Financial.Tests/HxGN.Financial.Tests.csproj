@@ -52,9 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HexMin.Financial\HexMin.Financial.csproj">
+    <ProjectReference Include="..\HxGN.Financial\HxGN.Financial.csproj">
       <Project>{fcb458b4-3c9a-4ec6-b281-a2de2a843450}</Project>
-      <Name>HexMin.Financial</Name>
+      <Name>HxGN.Financial</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
