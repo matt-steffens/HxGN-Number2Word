@@ -1,1 +1,1 @@
-# HexMin
+# HxGN-Number2Word
